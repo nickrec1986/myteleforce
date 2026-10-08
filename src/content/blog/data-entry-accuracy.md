@@ -106,4 +106,4 @@ Outsourcing data entry introduces a transition period. Your team needs to docume
 
 The return is a scalable operation that doesn't degrade when one person calls in sick and doesn't require a full-time manager to maintain accuracy. For most companies moving more than a few thousand records per month, the math is straightforward.
 
-Teleforce exists for U.S. companies that need accurate, bilingual, nearshore data entry—and want a partner accountable to a measurable standard. [Reach out](/\/#contact) when you're ready to put a number on what your current error rate is costing you.
+Teleforce exists for U.S. companies that need accurate, bilingual, nearshore data entry—and want a partner accountable to a measurable standard. [Reach out](/#contact) when you're ready to put a number on what your current error rate is costing you.
