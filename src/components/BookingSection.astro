@@ -1,0 +1,37 @@
+---
+// Discovery section for B2B buyers. The public Google Calendar appointment
+// type on the older site is titled as an executive-assistant call, so this
+// site uses the same FormSubmit contact form instead of that embed.
+import ProposalForm from './ProposalForm.astro';
+
+interface Props {
+  id?: string;
+  alias?: string;
+  heading?: string;
+  sub?: string;
+  subject?: string;
+  idPrefix?: string;
+}
+const {
+  id = 'contact',
+  alias,
+  heading = 'Book a discovery call',
+  sub = 'Tell us the functions you need, your channels, and rough volume. We’ll come back with a staffing plan and a go-live date — usually within two business days.',
+  subject = 'New Teleforce discovery call',
+  idPrefix = 'p',
+} = Astro.props;
+
+const trackHashes = [id, ...(alias ? [alias] : [])];
+const ctaSelector = trackHashes.map((hash) => `a[href$="#${hash}"]`).join(', ');
+const convScript = `(function(){var f=false;document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest(${JSON.stringify(ctaSelector)});if(t&&!f){f=true;if(typeof window.gtag==='function'){window.gtag('event','conversion',{send_to:'AW-18332056932/JvJ9COL479McEOT6s6VE'});}}},true);})();`;
+---
+<div class="booking">
+  {alias && <span id={alias} class="anchor-alias"></span>}
+  <ProposalForm id={id} heading={heading} sub={sub} subject={subject} idPrefix={idPrefix} />
+  <script is:inline set:html={convScript} />
+</div>
+
+<style>
+  .booking { position: relative; }
+  .anchor-alias { position: absolute; top: 0; left: 0; width: 1px; height: 1px; overflow: hidden; scroll-margin-top: 72px; }
+</style>

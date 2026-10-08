@@ -1,0 +1,61 @@
+---
+import { NAV_LINKS } from '../consts';
+---
+<nav>
+  <div class="bar">
+    <a href="/" class="logo" aria-label="Teleforce home"><img src="/brand/logo-light.png" alt="Teleforce" width="150" height="26" /></a>
+    <div class="links">
+      {NAV_LINKS.map((l) => <a href={l.href} class="nl">{l.label}</a>)}
+      <a href="/#contact" class="btn btn-amber">Book a call</a>
+    </div>
+    <details class="nav-more">
+      <summary>Menu</summary>
+      <div class="nav-panel">
+        {NAV_LINKS.map((l) => <a href={l.href}>{l.label}</a>)}
+        <a href="/#contact" class="btn btn-amber">Book a call</a>
+      </div>
+    </details>
+  </div>
+</nav>
+
+<style>
+  .nav-more { display: none; position: relative; }
+  .nav-more summary {
+    list-style: none;
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--on-dark);
+    border: 1px solid var(--line-dark);
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+  .nav-more summary::-webkit-details-marker { display: none; }
+  .nav-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: var(--ink-deep);
+    border: 1px solid var(--line-dark);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px;
+    z-index: 60;
+  }
+  .nav-panel a:not(.btn) {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--on-dark-mut);
+  }
+  @media (max-width: 860px) {
+    .links { display: none; }
+    .nav-more { display: block; }
+  }
+</style>
