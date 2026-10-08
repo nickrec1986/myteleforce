@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Thanks — we'll be in touch | Teleforce"
+  description="Your message reached the Teleforce team. We'll be in touch."
+  noindexFollow
+>
+  <!-- Event snippet for Submit lead form (1) conversion page -->
+  <script slot="head" is:inline>
+    gtag('event', 'conversion', {'send_to': 'AW-18332056932/JvJ9COL479McEOT6s6VE'});
+  </script>
+  <header class="ahead">
+    <div class="wrap">
+      <div class="cat">Message sent</div>
+      <h1>Thanks — we've got it.</h1>
+      <div class="ameta"><span>We reply within two business days</span></div>
+    </div>
+  </header>
+
+  <article class="post">
+    <p class="lead">Your message reached the Teleforce team. If you wrote about a program, we'll review it and come back with a staffing plan — usually within two business days. If you applied for a role, we'll read the application and reply the same way.</p>
+    <p>In the meantime, you can keep reading on <a href="/blog/">Signal</a>, our journal on bilingual and nearshore support, or head back to the <a href="/">home page</a>.</p>
+
+    <div class="cta-box">
+      <h4>Want to get ahead of the call?</h4>
+      <p>Jot down your current channels (voice, chat, email), the languages you serve, and your rough monthly volume — having those handy makes the first conversation faster.</p>
+      <a href="/" class="btn btn-amber">Back to home</a>
+    </div>
+  </article>
+</BaseLayout>

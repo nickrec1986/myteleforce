@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { STATS, LOGOS } from '../consts';
+const marquee = [...LOGOS, ...LOGOS];
+---
+<BaseLayout
+  title="About Teleforce — 30-Year Nearshore BPO"
+  description="Teleforce is a Latin America BPO with more than 30 years of Fortune 500 operating history, running bilingual programs for U.S. companies."
+>
+  <header class="ahead">
+    <div class="wrap">
+      <div class="cat">About</div>
+      <h1>A 30-year nearshore operator.</h1>
+      <div class="ameta"><span>Latin America</span><span>English / Spanish</span><span>U.S. hours</span></div>
+    </div>
+  </header>
+
+  <article class="post">
+    <p class="lead">Teleforce is the Latin America BPO that has worked with Fortune 500 and U.S. companies for more than 30 years. The infrastructure, processes, training, security, and operating experience from that work are what a program plugs into.</p>
+
+    <p>What a customer-facing or back-office team can truly own depends on the system behind them — the recruiting bar, the training, the security posture, the managers who have already run demanding accounts. Building that to an enterprise standard takes years of real work.</p>
+
+    <img class="about-img" src="/brand/image8.jpg" alt="The Teleforce team" loading="lazy" />
+
+    <h2>A 30-year operator</h2>
+    <p>Teleforce has operated for more than 30 years, across 20+ industries, with recruiting, training, quality assurance, information security, and uptime processes built to the standard of large global enterprises. That operation already exists. It shows up as bilingual teams for U.S. companies: customer service, appointment setting, data entry, sales lead generation, SDR/BDR, tech support, and billing and account servicing.</p>
+    <p>When you engage Teleforce, you inherit a system refined across three decades and some of the most demanding accounts in the world.</p>
+
+    <div class="trust" style="border-radius:14px;margin:30px 0">
+      <div class="row">
+        {STATS.map((s) => (
+          <div class="stat"><span class="n">{s.n}</span><span class="k">{s.k}</span></div>
+        ))}
+      </div>
+    </div>
+
+    <h2>Trusted by global enterprises</h2>
+    <p>You'll see names like UPS, American Express, SAP, and Nike among the enterprises Teleforce's operation has supported over 30+ years — proof of the reach and the standard it operates to. That same standard is available to a U.S. company that needs a bilingual team without building the operation itself.</p>
+
+    <div class="logos" style="border-radius:14px;margin:24px 0;padding-top:24px">
+      <div class="lab">Trusted by global enterprises for 30+ years</div>
+      <div class="marquee-mask">
+        <div class="marquee">
+          {marquee.map((name) => <span>{name}</span>)}
+        </div>
+      </div>
+    </div>
+
+    <h2>Why bilingual, why LATAM</h2>
+    <p>U.S. companies work in English, and many also serve customers in Spanish. Latin America is one of the few talent pools where native-level Spanish and strong English coexist at scale — on U.S. business hours, with clear, accent-neutral Spanish, and with higher retention than offshore alternatives. Teams work your hours, in the conversation the same day.</p>
+
+    <img class="about-img" src="/brand/image9.jpg" alt="The Teleforce team at work" loading="lazy" />
+
+    <h2>Employed by Teleforce</h2>
+    <p>Agents and specialists are employed and managed by Teleforce. We handle recruiting, onboarding, alignment, HR, QA, payroll, taxes, and benefits. You get a named team that learns the account and stays on it. You run the work. We run the operation behind the seats.</p>
+
+    <h2>U.S. legal oversight</h2>
+    <p>Teleforce operates with U.S. legal and compliance oversight of data handling — supervision that's uncommon in this category. Customer programs and back-office work sit inside your tools, your records, and your customers' information. That oversight is why companies can hand over real responsibility and stand behind the arrangement.</p>
+
+    <div class="cta-box">
+      <h4>Book a discovery call.</h4>
+      <p>We'll cover the functions you need, how you work today, and what a go-live looks like. No commitment on the call.</p>
+      <a href="/#contact" class="btn btn-amber">Book a call</a>
+    </div>
+  </article>
+</BaseLayout>

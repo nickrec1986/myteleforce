@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Waveform from '../components/Waveform.astro';
+import BookingSection from '../components/BookingSection.astro';
+import { SITE, STATS, LOGOS, ALL_SERVICES, TESTIMONIALS } from '../consts';
+
+const marquee = [...LOGOS, ...LOGOS];
+const t = TESTIMONIALS[0];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Teleforce',
+  description: SITE.description,
+  url: SITE.url,
+  areaServed: ['US', 'CA'],
+  telephone: '+1-866-252-3961',
+  knowsAbout: ALL_SERVICES.map((s) => s.name),
+};
+---
+<BaseLayout title={SITE.title} description={SITE.description} jsonLd={jsonLd}>
+  <header class="hero" id="top">
+    <Waveform />
+    <div class="inner">
+      <div class="kicker">Nearshore BPO · Latin America · 30 years</div>
+      <h1 class="disp">Bilingual teams<br /><span class="l2">for U.S. companies.</span></h1>
+      <p class="lede">Teleforce is a Latin America BPO with more than 30 years of operating history. Native English and Spanish, on U.S. business hours — customer service, appointment setting, data entry, sales lead generation, SDR/BDR, tech support, and billing and account servicing.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-amber">Book a call</a>
+        <a href="/services/" class="btn btn-ghost">See services</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="trust">
+    <div class="row">
+      {STATS.map((s) => (
+        <div class="stat"><span class="n">{s.n}</span><span class="k">{s.k}</span></div>
+      ))}
+      <div class="stat"><span class="n">EN / ES</span><span class="k">Native bilingual</span></div>
+    </div>
+  </div>
+
+  <div class="logos">
+    <div class="lab">Trusted by global enterprises for 30+ years</div>
+    <div class="marquee-mask">
+      <div class="marquee">{marquee.map((name) => <span>{name}</span>)}</div>
+    </div>
+  </div>
+
+  <section class="block" id="services">
+    <div class="wrap reveal">
+      <div class="eyebrow">What we run</div>
+      <h2 class="disp">One bilingual operation. Seven ways to use it.</h2>
+      <p class="sub">Start with the function you need. Add others as you grow — same trained standard, same U.S. hours, English and Spanish from one company.</p>
+      <div class="offer svcs">
+        {ALL_SERVICES.map((s) => (
+          <a href={s.slug === 'tech-support' || s.slug === 'billing-account-servicing' ? `/services/${s.slug}/` : `/${s.slug}/`} class="cell link">
+            <div class="ic">{s.ic}</div>
+            <h3>{s.name}</h3>
+            <p>{s.short}</p>
+            <span class="more">Learn more <span class="ar">→</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap" style="padding-bottom:8px">
+    <img class="band-img" src="/brand/image1.jpg" alt="Teleforce teams at work" />
+  </div>
+
+  <div class="howwrap">
+    <section class="block" id="how">
+      <div class="wrap reveal">
+        <div class="eyebrow">How it works</div>
+        <h2 class="disp">Live in about 30 days.</h2>
+        <p class="sub">Scope, staff, and go live. Depth depends on the work — most programs move from a scoping conversation to a producing team in a few weeks.</p>
+        <div class="steps">
+          <div class="step"><div class="num">01</div><h4>Scope</h4><p>We map your volumes, channels, tools, and the voice your customers expect.</p></div>
+          <div class="step"><div class="num">02</div><h4>Staff &amp; train</h4><p>We recruit bilingual talent and train them on your product as brand staff.</p></div>
+          <div class="step"><div class="num">03</div><h4>Go live</h4><p>Your team starts producing — with QA, reporting, and a named lead from day one.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="block">
+    <div class="wrap reveal">
+      <div class="eyebrow">Why Latin America</div>
+      <h2 class="disp">Bilingual, on your hours.</h2>
+      <p class="sub" style="max-width:68ch">U.S. companies work in English, and many also serve customers in Spanish. Latin America is one of the few talent pools where native-level Spanish and strong English coexist at scale — on U.S. business hours, with clear, accent-neutral Spanish, and with higher retention than offshore alternatives. The team works your hours, in the conversation the same day.</p>
+      <ul class="why-list">
+        <li>Native English and Spanish from one seat — no language routing</li>
+        <li>Full overlap with U.S. business hours, not an overnight queue</li>
+        <li>Named people, employed and managed by Teleforce</li>
+        <li>Recruiting, training, QA, and security already in place — 30 years of it</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap reveal">
+      <blockquote class="quote">
+        <p>“{t.quote}”</p>
+        <div class="by">
+          <img class="avatar" src={t.avatar} alt="" width="42" height="42" />
+          <span><b>{t.name}</b> · {t.company}</span>
+        </div>
+      </blockquote>
+    </div>
+  </section>
+
+  <BookingSection
+    id="contact"
+    heading="Book a discovery call"
+    sub="Tell us the functions you need, your channels, and rough volume. We’ll come back with a staffing plan and a go-live date — usually within two business days."
+    subject="New Teleforce discovery call"
+  />
+</BaseLayout>
+
+<style>
+  .hero h1.disp { font-size: clamp(42px, 8vw, 78px); text-transform: none; }
+  .why-list { list-style: none; margin: 28px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px; max-width: 860px; }
+  .why-list li { position: relative; padding-left: 28px; font-size: 15.5px; line-height: 1.45; }
+  .why-list li::before { content: "›"; position: absolute; left: 4px; color: var(--amber); font-family: 'IBM Plex Mono', monospace; font-weight: 600; }
+  @media (max-width: 680px) { .why-list { grid-template-columns: 1fr; } }
+</style>

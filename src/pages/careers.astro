@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, FORM_ACTION, PHONE, PHONE_HREF } from '../consts';
+
+const roles = [
+  {
+    ic: 'CUSTOMER SERVICE',
+    name: 'Bilingual customer service',
+    short: 'Phone, live chat, and email for U.S. companies — English and Spanish, on U.S. hours.',
+  },
+  {
+    ic: 'SALES',
+    name: 'Sales, SDR, and appointment setting',
+    short: 'Outbound and inbound work: prospecting, qualifying, and booking meetings on a client’s calendar.',
+  },
+  {
+    ic: 'OPERATIONS',
+    name: 'Operations',
+    short: 'Data entry, billing and account servicing, and tech support — accurate back-office and technical work.',
+  },
+  {
+    ic: 'ASSISTANTS',
+    name: 'Executive assistants',
+    short: 'Dedicated support for U.S. leaders. Employed by Teleforce, working U.S. hours.',
+  },
+];
+---
+<BaseLayout
+  title="Careers at Teleforce"
+  description="Work at Teleforce, a 30-year Latin America BPO. Roles in bilingual customer service, sales, operations, and executive assistance."
+>
+  <header class="ahead">
+    <div class="wrap">
+      <div class="cat">Careers</div>
+      <h1>Work with a 30-year operator.</h1>
+      <div class="ameta"><span>Latin America</span><span>English / Spanish</span><span>U.S. hours</span></div>
+    </div>
+  </header>
+
+  <article class="post">
+    <p class="lead">Teleforce is a Latin America BPO that has supported Fortune 500 and U.S. companies for more than 30 years. People here are employed by Teleforce — recruited, trained, and managed inside an operation that already runs at enterprise standard.</p>
+    <p>We hire bilingual professionals who want real accounts, U.S. business hours, and a company that stays behind the seat: coaching, QA, and a manager who has run this work before.</p>
+  </article>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="eyebrow">Roles</div>
+      <h2 class="disp">The work we hire for.</h2>
+      <div class="offer svcs">
+        {roles.map((r) => (
+          <div class="cell">
+            <div class="ic">{r.ic}</div>
+            <h3>{r.name}</h3>
+            <p>{r.short}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="eyebrow">Why Teleforce</div>
+      <h2 class="disp">An employer, not a marketplace.</h2>
+      <ul class="svc-list">
+        <li>You are employed by Teleforce — payroll, HR, and the operation are ours</li>
+        <li>U.S. business hours, from Latin America</li>
+        <li>English and Spanish used on real accounts, not as a side skill</li>
+        <li>Training and QA that already exist, refined across 20+ industries</li>
+        <li>A 30-year company, not a desk you rent by the week</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact" id="apply">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <div class="eyebrow" style="color:var(--amber)">Apply</div>
+          <h2 class="disp" style="color:#fff">Tell us where you fit.</h2>
+          <p class="sub">Share a little about your experience and the kind of role you want. A person on the Teleforce team reads every application.</p>
+          <p class="sub" style="margin-top:18px">Prefer to call? <a href={PHONE_HREF} style="color:var(--amber);font-weight:600">{PHONE}</a>.</p>
+        </div>
+        <form method="POST" action={FORM_ACTION}>
+          <input type="hidden" name="_subject" value="Teleforce careers application" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value={`${SITE.url}/thanks/`} />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" type="text" required /></div>
+          <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" required /></div>
+          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" /></div>
+          <div class="field"><label for="c-city">City and country</label><input id="c-city" name="location" type="text" required /></div>
+          <div class="field">
+            <label for="c-role">Role</label>
+            <select id="c-role" name="role" required>
+              <option value="" disabled selected>Select a role</option>
+              <option>Bilingual customer service</option>
+              <option>Sales / SDR / appointment setting</option>
+              <option>Operations — data, billing, or tech support</option>
+              <option>Executive assistant</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="c-link">LinkedIn or portfolio (optional)</label><input id="c-link" name="link" type="url" placeholder="https://" /></div>
+          <div class="field"><label for="c-note">Experience</label><textarea id="c-note" name="message" rows="4" required placeholder="Languages, years of experience, and the work you want."></textarea></div>
+          <button class="btn btn-amber" type="submit">Submit application</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  select {
+    width: 100%;
+    background: var(--ink-deep);
+    border: 1px solid var(--line-dark);
+    border-radius: 9px;
+    padding: 12px 14px;
+    color: var(--on-dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+  }
+  select:focus { outline: none; border-color: var(--amber); }
+</style>
